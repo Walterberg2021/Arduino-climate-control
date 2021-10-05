@@ -19,25 +19,26 @@ byte menu, maxtemp, maxhum, temp, hum, mintemp, minhum, hourset, minset, secset;
 byte ontimeh, ontimem, offtimeh, offtimem, dayset, monthset, yearset, dayofweekset;   //
 unsigned long sec1, sec2;                                                             // Створення змінних типу unsigned long
 boolean light;
-void setup(){                       // void setup()
-                                    //
-  watch.begin();                    //
-  lcd.begin();                      //
-  lcd.setBacklight(HIGH);           //
-  enc.setType(TYPE2);               //
-  enc.setTickMode(AUTO);            //
-  pinMode(tempHumSens,INPUT);       //
-  pinMode(vent_rele,OUTPUT);        //
-  pinMode(tempup_rele,OUTPUT);      //
-  pinMode(humup_rele,OUTPUT);       //
-  pinMode(light_rele,OUTPUT);       //
-  menu = 1;                         //
-  light = 1;                        //
-  updateMenu();                     //
-                                    //
-}                                   //
+void setup(){
+  
+  watch.begin();
+  lcd.begin();
+  lcd.setBacklight(HIGH);
+  enc.setType(TYPE2);
+  enc.setTickMode(AUTO);
+  pinMode(tempHumSens,INPUT);
+  pinMode(vent_rele,OUTPUT);
+  pinMode(tempup_rele,OUTPUT);
+  pinMode(humup_rele,OUTPUT);
+  pinMode(light_rele,OUTPUT);
+  menu = 1;
+  light = 1;
+  updateMenu();
+  
+}
 
-void loop(){ 
+void loop(){
+  Serial.println(watch.gettimeUnix());
 
   if(watch.gettimeUnix() - sec1 >= 1){
       sec1 = watch.gettimeUnix();
